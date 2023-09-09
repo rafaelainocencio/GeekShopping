@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.DataProtection.KeyManagement.Internal;
 
 namespace GeekShopping.Web.Services.IServices
 {
-    public interface IProductSefvice
+    public interface IProductService
     {
         Task<IEnumerable<ProductModel>> FindAllProducts();
         Task<ProductModel> FindById(long id);
