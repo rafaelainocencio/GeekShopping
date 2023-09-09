@@ -38,4 +38,3 @@ namespace GeekShopping.Web.Utils
         }
     }
 }
-}
