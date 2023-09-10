@@ -13,16 +13,24 @@ namespace GeekShopping.ProductAPI.Repository
 
         public ProductRepository(MySQLContext context, IMapper mapper)
         {
-            _context = context; 
+            _context = context;
             _mapper = mapper;
         }
 
         public async Task<ProductVO> Create(ProductVO productVO)
         {
-            Product product = _mapper.Map<Product>(productVO);
-            _context.Products.Add(product);
-            await _context.SaveChangesAsync();
-            return _mapper.Map<ProductVO>(product);
+            try
+            {
+                Product product = _mapper.Map<Product>(productVO);
+                _context.Products.Add(product);
+                await _context.SaveChangesAsync();
+                return _mapper.Map<ProductVO>(product);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+
         }
 
         public async Task<bool> Delete(long id)
@@ -33,7 +41,7 @@ namespace GeekShopping.ProductAPI.Repository
                 .Where(p => p.Id == id)
                 .FirstOrDefaultAsync() ?? new Product();
 
-                if(product.Id <= 0)
+                if (product.Id <= 0)
                 {
                     return false;
                 }

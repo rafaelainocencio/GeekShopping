@@ -29,7 +29,7 @@
                 <td>@item.CategoryName</td>
                 <td>@((item.Price).ToString("c"))</td>
                 <td >
-                    <a asp-action="ProductEdit" asp-route-id="@item.Id" class="fas fa-edit btn btn-success"></a>
+                    <a asp-action="ProductUpdate" asp-route-id="@item.Id" class="fas fa-edit btn btn-success"></a>
                 </td>
                 <td>
                     <a asp-action="ProductDelete" asp-route-id="@item.Id" class="fas fa-trash row-cols-0 btn btn-danger"></a>
